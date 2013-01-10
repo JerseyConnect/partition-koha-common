@@ -1,5 +1,3 @@
---- a/debian/scripts/koha-dump
-+++ b/debian/scripts/koha-dump
 @@ -62,7 +62,7 @@
      "etc/koha/sites/$name" \
      "etc/apache2/sites-available/$name" \

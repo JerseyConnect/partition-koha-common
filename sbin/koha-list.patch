@@ -1,5 +1,3 @@
---- a/debian/scripts/koha-list
-+++ b/debian/scripts/koha-list
 @@ -63,7 +63,7 @@
      shift
  done
