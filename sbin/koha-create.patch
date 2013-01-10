@@ -1,0 +1,20 @@
+--- a/debian/scripts/koha-create
++++ b/debian/scripts/koha-create
+@@ -228,7 +228,7 @@
+     if [ "$op" = create ]
+     then
+         mysql --defaults-extra-file=/etc/mysql/koha-common.cnf <<eof
+-CREATE DATABASE \`$mysqldb\`;
++CREATE DATABASE IF NOT EXISTS \`$mysqldb\`;
+ CREATE USER \`$mysqluser\`@'$mysql_hostname' IDENTIFIED BY '$mysqlpwd';
+ CREATE USER \`$mysqluser\`@'%' IDENTIFIED BY '$mysqlpwd';
+ GRANT ALL PRIVILEGES ON \`$mysqldb\`.* TO \`$mysqluser\`;
+@@ -249,8 +249,6 @@
+     # Generate and install Apache site-available file and log dir.
+     generate_config_file apache-site.conf.in \
+         "/etc/apache2/sites-available/$name"
+-    mkdir "/var/log/koha/$name"
+-    chown "$username:$username" "/var/log/koha/$name"
+ 
+ 
+     # Generate and install main Koha config file.

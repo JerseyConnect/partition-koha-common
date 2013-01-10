@@ -1,0 +1,11 @@
+--- a/debian/scripts/koha-list
++++ b/debian/scripts/koha-list
+@@ -63,7 +63,7 @@
+     shift
+ done
+ 
+-find /etc/koha/sites -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | 
++find -L /etc/koha/sites -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | 
+ sort |
+ while read name
+ do
