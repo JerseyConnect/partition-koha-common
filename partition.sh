@@ -12,8 +12,8 @@ if [ -d /usr/share/koha ]; then
     do
         for i in $file;
         do
-            # echo "echo \"$i\" | sed 's/\(patches\/\)\(.*\)\(\.patch\)/\2/'"
-            filename=`echo "$i" | sed 's/\(patches\/\)\(.*\)\(\.patch\)/\2/'`
+            # echo "echo \"$i\" | sed 's/\(sbin\/\)\(.*\)\(\.patch\)/\2/'"
+            filename=`echo "$i" | sed 's/\(sbin\/\)\(.*\)\(\.patch\)/\2/'`
             echo "Found patch for: $filename - patching"
             cp /usr/sbin/$filename ./$filename-backup
             patch /usr/sbin/$filename $i
