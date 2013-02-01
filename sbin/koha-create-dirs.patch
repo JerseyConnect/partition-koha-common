@@ -7,7 +7,7 @@
 +   local dest="$2"
 +
 +   # Consolidate fragmented components
-+   if [ ! -L $dest ] && [ -d $source ]
++   if [ ! -L $dest ] && [ -d $dest ] && [ -d $source ]
 +   then
 +       cp -Rp "$dest/"* "$source"
 +       rm -rf $dest
