@@ -1,9 +1,9 @@
-@@ -63,7 +63,7 @@
-     shift
- done
+@@ -51,7 +51,7 @@
  
--find /etc/koha/sites -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | 
-+find -L /etc/koha/sites -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | 
- sort |
- while read name
- do
+ get_instances()
+ {
+-    find /etc/koha/sites -mindepth 1 -maxdepth 1\
++    find -L /etc/koha/sites -mindepth 1 -maxdepth 1\
+                          -type d -printf '%f\n' | sort
+ }
+ 
