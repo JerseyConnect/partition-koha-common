@@ -1,7 +1,7 @@
-@@ -36,26 +36,65 @@
+@@ -36,27 +36,65 @@
      fi
  }
- 
+
 +createlink() {
 +   local source="$1"
 +   local dest="$2"
@@ -12,7 +12,7 @@
 +       cp -Rp "$dest/"* "$source"
 +       rm -rf $dest
 +   fi
-+   
++
 +   # Create symbolic links to expected paths
 +   if [ ! -L $dest ] && [ ! -d $dest ]
 +   then
@@ -35,13 +35,13 @@
 -    userdir "$name" "/var/lib/koha/$name/biblios/register"
 -    userdir "$name" "/var/lib/koha/$name/biblios/shadow"
 -    userdir "$name" "/var/lib/koha/$name/biblios/tmp"
+-    userdir "$name" "/var/lib/koha/$name/plugins"
 -    userdir "$name" "/var/lock/koha/$name"
 -    userdir "$name" "/var/lock/koha/$name/authorities"
 -    userdir "$name" "/var/lock/koha/$name/biblios"
 -    userdir "$name" "/var/run/koha/$name"
 -    userdir "$name" "/var/run/koha/$name/authorities"
 -    userdir "$name" "/var/run/koha/$name/biblios"
-+
 +    KOHA_ROOT="/var/lib/koha/$name"
 +    userdir "$name" "$KOHA_ROOT"
 +    userdir "$name" "$KOHA_ROOT/var/lib/authorities"
@@ -54,6 +54,7 @@
 +    userdir "$name" "$KOHA_ROOT/var/lib/biblios/register"
 +    userdir "$name" "$KOHA_ROOT/var/lib/biblios/shadow"
 +    userdir "$name" "$KOHA_ROOT/var/lib/biblios/tmp"
++    userdir "$name" "$KOHA_ROOT/var/lib/plugins"
 +    userdir "$name" "$KOHA_ROOT/var/lock"
 +    userdir "$name" "$KOHA_ROOT/var/lock/authorities"
 +    userdir "$name" "$KOHA_ROOT/var/lock/biblios"
@@ -76,10 +77,9 @@
 +    createlink "$KOHA_ROOT/etc" "/etc/koha/sites/$name"
 +    createlink "$KOHA_ROOT/var/lib/authorities" "/var/lib/koha/$name/authorities"
 +    createlink "$KOHA_ROOT/var/lib/biblios" "/var/lib/koha/$name/biblios"
++    createlink "$KOHA_ROOT/var/lib/plugins" "/var/lib/koha/$name/plugins"
 +    createlink "$KOHA_ROOT/var/lib/mysql" "/var/lib/mysql/koha_$name"
 +    createlink "$KOHA_ROOT/var/lock" "/var/lock/koha/$name"
 +    createlink "$KOHA_ROOT/var/log" "/var/log/koha/$name"
 +    createlink "$KOHA_ROOT/var/run" "/var/run/koha/$name"
-+
  done
- 
